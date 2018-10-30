@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :user_name, presence: true, uniqueness: true
 
+  has_many :cars
+
   def admin?
     role == "admin"
   end
