@@ -6,8 +6,6 @@ const CarTile = props => {
   return (
     <div>
       <p>{props.year} {props.make} {props.model}</p>
-
-
     </div>
 
   )
