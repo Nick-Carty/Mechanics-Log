@@ -35,4 +35,11 @@ RSpec.describe Car, :type => :model do
     expect(subject).to_not be_valid
   end
 
+  it "should not be valid without an associated user" do
+    subject.user_id = nil
+    expect(subject).to_not be_valid
+    subject.user_id = ""
+    expect(subject).to_not be_valid
+  end
+
 end

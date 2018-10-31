@@ -8,7 +8,6 @@ class CarsIndexContainer extends Component {
     this.state = {
       cars: []
     }
-    // binding location
   }
 
   componentDidMount() {
@@ -25,7 +24,7 @@ class CarsIndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
       let fetchedCars = body
-      this.setState({ cars: fetchedCars})
+      this.setState({ cars: fetchedCars })
 
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));

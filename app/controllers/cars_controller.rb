@@ -4,4 +4,11 @@ class CarsController < ApplicationController
 
   def show
   end
+
+  def new
+    @car = Car.new
+  end
+
+  def create
+  end
 end
