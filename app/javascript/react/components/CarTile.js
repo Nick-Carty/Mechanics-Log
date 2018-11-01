@@ -4,7 +4,7 @@ const CarTile = props => {
 
 
   return (
-    <div>
+    <div className="car-tile">
       <p>{props.year} {props.make} {props.model}</p>
     </div>
 

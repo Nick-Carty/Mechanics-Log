@@ -11,7 +11,7 @@ class Api::V1::CarsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:current_user_id])
+    @user = User.find(params[:user_id])
     car = Car.new(car_params)
     car.user=@user
     if car.save

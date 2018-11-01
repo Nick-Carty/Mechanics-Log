@@ -11,7 +11,7 @@ class CarsIndexContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/current_user/${window.currentUser.id}/cars`)
+    fetch(`/api/v1/users/${window.currentUser.id}/cars`)
     .then(response => {
       if (response.ok) {
         return response;
@@ -45,7 +45,7 @@ class CarsIndexContainer extends Component {
       )
     })
     return(
-      <div>
+      <div className="text-center border car-index">
         <h3>Your Cars</h3>
         {cars}
       </div>

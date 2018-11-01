@@ -89,7 +89,7 @@ class CarsFormContainer extends Component {
       make: this.state.make,
       model: this.state.model
     }
-    fetch(`/api/v1/current_user/${window.currentUser.id}/cars`, {
+    fetch(`/api/v1/users/${window.currentUser.id}/cars`, {
       method: 'POST',
       body: JSON.stringify(formPayload),
       headers: {
@@ -127,7 +127,7 @@ class CarsFormContainer extends Component {
 
 
     return(
-      <div>
+      <div className="custom-form">
         <h1> Add a Car</h1>
         <div>
           <form onSubmit={this.handleSubmit}>
@@ -162,7 +162,7 @@ class CarsFormContainer extends Component {
             />
           </div>
 
-          <input className="button" type="submit" value="Submit" />
+          <input className="button button1" type="submit" value="Submit" />
           </form>
         </div>
       </div>

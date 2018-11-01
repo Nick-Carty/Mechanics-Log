@@ -9,7 +9,7 @@ export const App = (props) => {
     <Router history={browserHistory}>
       <Route path='/' component={UserContainer} />
       <Route path='/users/:id' component={UserContainer} />
-      <Route path='/current_user/:id/cars/new' component={CarsFormContainer} />
+      <Route path='/users/:id/cars/new' component={CarsFormContainer} />
     </Router>
   );
 }

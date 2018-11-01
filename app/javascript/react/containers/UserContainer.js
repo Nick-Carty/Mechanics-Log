@@ -14,12 +14,12 @@ class UserContainer extends Component {
 
   render(){
     return(
-      <div>
+      <div className="border profile-page">
         <UserShowPage/>
-        <CarsIndexContainer/>
-        <Link to={`/current_user/${window.currentUser.id}/cars/new`}>
-          <button>Add a Car</button>
+        <Link to={`/users/${window.currentUser.id}/cars/new`}>
+        <button className="right button1">Add a Car</button>
         </Link>
+        <CarsIndexContainer/>
       </div>
     )
   }
