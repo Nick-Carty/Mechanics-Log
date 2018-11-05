@@ -7,9 +7,8 @@ const RepairTile = props => {
   return (
     <div className="car-tile">
       <div className="left-float">
-          <p>Image</p>
       </div>
-      <div>
+      <div className="repair-tile font">
         <p>{props.title}</p>
         <p>{props.description}</p>
       </div>

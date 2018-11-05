@@ -4,6 +4,7 @@ import UserContainer from '../containers/UserContainer'
 import CarsIndexContainer from '../containers/CarsIndexContainer'
 import CarsFormContainer from '../containers/CarsFormContainer'
 import CarsShowContainer from '../containers/CarsShowContainer'
+import RepairsFormContainer from '../containers/RepairsFormContainer'
 
 export const App = (props) => {
   return (
@@ -12,6 +13,7 @@ export const App = (props) => {
       <Route path='/users/:id' component={UserContainer} />
       <Route path='/users/:id/cars/new' component={CarsFormContainer} />
       <Route path='/cars/:car_id' component={CarsShowContainer} />
+      <Route path='/cars/:car_id/repairs/new' component={RepairsFormContainer} />
     </Router>
   );
 }

@@ -132,15 +132,16 @@ class CarsFormContainer extends Component {
         <div>
           <form onSubmit={this.handleSubmit}>
           {errorDiv}
+          <label>Year</label>
           <div>
             <input
               name='year'
               type= 'text'
               value={this.state.year}
               onChange={this.handleChange}
-              placeholder="Year"
             />
           </div>
+          <label>Make</label>
           <div className="field">
             <input
               label='Make'
@@ -148,9 +149,9 @@ class CarsFormContainer extends Component {
               type = 'text'
               value={this.state.make}
               onChange={this.handleChange}
-              placeholder="Make"
             />
           </div>
+          <label>Model</label>
           <div className="field" placeholder="First Name">
             <input
               label='Model'
@@ -158,7 +159,6 @@ class CarsFormContainer extends Component {
               name='model'
               value={this.state.model}
               onChange={this.handleChange}
-              placeholder="Model"
             />
           </div>
 
