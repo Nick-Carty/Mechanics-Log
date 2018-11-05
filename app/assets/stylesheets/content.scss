@@ -50,7 +50,7 @@
   font-family: 'Cabin', sans-serif;
   background-color: #798478;
   border: 2px solid black;
-  height: 100px;
+  height: auto;
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
@@ -71,7 +71,11 @@
 
 .font h1 {
   font-family: 'Cabin', sans-serif;
-  color: #DEE7E7;
+  color: #DBCBD8;
+}
+
+.font p {
+  font-family: 'Cabin', sans-serif;
 }
 
 .button1 {
@@ -90,4 +94,8 @@
 .top-bar h1 {
   font-family: 'Cabin', sans-serif;
   color: #DEE7E7;
+}
+
+.repair-tile {
+
 }

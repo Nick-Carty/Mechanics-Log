@@ -9,7 +9,6 @@ const CarTile = props => {
     <div className="car-tile">
 
       <div className="left-float">
-          <p>Image</p>
       </div>
       <div className="">
         <Link to={`/cars/${props.id}`}>

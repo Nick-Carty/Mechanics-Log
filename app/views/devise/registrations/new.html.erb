@@ -5,11 +5,23 @@
       <h2 class="login-box-title">Sign up</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
-          <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name", class: "login-box-input", placeholder: "First Name" %>
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", class: "login-box-input", placeholder: "Last Name" %>
-          <%= f.text_field :user_name, autofocus: true, autocomplete: "user-name", class: "login-box-input", placeholder: "User Name" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "login-box-input", placeholder: "Email" %>
+
+          <%= f.label :first_name, 'First name' %>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name", class: "login-box-input", placeholder: "John" %>
+
+          <%= f.label :last_name, 'Last name' %>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name", class: "login-box-input", placeholder: "Doe" %>
+
+          <%= f.label :user_name, 'Username' %>
+          <%= f.text_field :user_name, autofocus: true, autocomplete: "user-name", class: "login-box-input", placeholder: "JDoe1991" %>
+
+          <%= f.label :email, 'Email' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "login-box-input", placeholder: "JD@example.com" %>
+
+          <%= f.label :password, 'Password' %>
           <%= f.password_field :password, autocomplete: "new-password", class: "login-box-input", placeholder: "Password" %>
+
+          <%= f.label :password_confirmation, 'Password confirmation' %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "login-box-input", placeholder: "Retype Password" %>
           <%= f.submit "Sign up", class: "login-box-submit-button" %>
       <% end %>

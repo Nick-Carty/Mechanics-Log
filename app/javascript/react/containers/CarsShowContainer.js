@@ -41,6 +41,9 @@ class CarsShowContainer extends Component {
           <div className="font">
             <h1>{year} {make} {model}</h1>
           </div>
+          <Link to={`/cars/${this.state.car.id}/repairs/new`}>
+            <button className="right button1">Add a Repair</button>
+          </Link>
           <RepairsIndexContainer
             carId={this.state.car.id}
           />
