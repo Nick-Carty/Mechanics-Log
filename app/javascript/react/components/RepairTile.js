@@ -2,23 +2,20 @@ import React from 'react'
 import { Link } from 'react-router';
 
 
-const CarTile = props => {
-
+const RepairTile = props => {
 
   return (
     <div className="car-tile">
-
       <div className="left-float">
           <p>Image</p>
       </div>
-      <div className="">
-        <Link to={`/cars/${props.id}`}>
-          <h1>{props.year} {props.make} {props.model}</h1>
-        </Link>
+      <div>
+        <p>{props.title}</p>
+        <p>{props.description}</p>
       </div>
     </div>
 
   )
 }
 
-export default CarTile;
+export default RepairTile;
