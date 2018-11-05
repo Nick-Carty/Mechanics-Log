@@ -1,13 +1,13 @@
 class Api::V1::CarsController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
   before_action :authenticate_user!
 
   def index
     render json: current_user.cars
   end
 
-  def new
-    car = Car.new
-    render json: {car: car}
+  def show
+    render json: Car.find(params[:id])
   end
 
   def create

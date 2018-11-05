@@ -17,7 +17,7 @@ class UserContainer extends Component {
       <div className="border profile-page">
         <UserShowPage/>
         <Link to={`/users/${window.currentUser.id}/cars/new`}>
-        <button className="right button1">Add a Car</button>
+          <button className="right button1">Add a Car</button>
         </Link>
         <CarsIndexContainer/>
       </div>

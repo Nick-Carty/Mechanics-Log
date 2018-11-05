@@ -127,42 +127,42 @@ class CarsFormContainer extends Component {
 
 
     return(
-      <div className="custom-form">
-        <h1> Add a Car</h1>
+      <div className="login-box">
+        <h1 className="login-box-title"> Add a Car</h1>
         <div>
           <form onSubmit={this.handleSubmit}>
           {errorDiv}
-          <label >Year</label>
           <div>
             <input
               name='year'
-              type = 'text'
+              type= 'text'
               value={this.state.year}
               onChange={this.handleChange}
+              placeholder="Year"
             />
           </div>
-          <label>Make</label>
           <div className="field">
-          <input
-          label='Make'
-          name='make'
-          type = 'text'
-          value={this.state.make}
-          onChange={this.handleChange}
-          />
+            <input
+              label='Make'
+              name='make'
+              type = 'text'
+              value={this.state.make}
+              onChange={this.handleChange}
+              placeholder="Make"
+            />
           </div>
-          <label>Model</label>
-          <div className="field">
+          <div className="field" placeholder="First Name">
             <input
               label='Model'
               type = 'text'
               name='model'
               value={this.state.model}
               onChange={this.handleChange}
+              placeholder="Model"
             />
           </div>
 
-          <input className="button button1" type="submit" value="Submit" />
+          <input className="login-box-submit-button" type="submit" value="Submit" />
           </form>
         </div>
       </div>
