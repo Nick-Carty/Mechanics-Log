@@ -8,7 +8,6 @@ const UserShowPage = props => {
       <h3>Welcome, {window.currentUser.first_name}</h3>
     </div>
   )
-
 }
 
 export default UserShowPage;

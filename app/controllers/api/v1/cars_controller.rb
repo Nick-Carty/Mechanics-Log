@@ -21,6 +21,16 @@ class Api::V1::CarsController < ApplicationController
     end
   end
 
+  def destroy
+    car = Car.find(params[:id])
+    if current_user.id == car.user_id
+      car.destroy
+      render json: { car_id: car.id}
+    else
+      render json: { error: "You must be an admin to delete"}, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def car_params

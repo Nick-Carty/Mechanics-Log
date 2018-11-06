@@ -16,10 +16,20 @@
 
  */
 
- body {
-   background-image: url(background1.jpg);
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-attachment: fixed;
- }
+
+body {
+ background-image: url(background1.jpg);
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-attachment: fixed;
+}
+
+.top-bar {
+ background-color: #313E50;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+ font-family: 'Cabin', sans-serif;
+ background-color: #313E50;
+}

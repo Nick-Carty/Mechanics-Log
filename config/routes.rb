@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show] do
         resources :cars, only: [:index, :create]
       end
-      resources :cars, only: [:show] do
+      resources :cars, only: [:show, :destroy] do
         resources :repairs, only: [:index, :show, :create]
       end
     end
@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   resources :cars, only: [:show] do
     resources :repairs, only: [:new, :show]
   end
+
+  get '*path', to: 'homes#index'
+
 end

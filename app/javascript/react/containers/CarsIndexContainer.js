@@ -6,7 +6,41 @@ class CarsIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cars: []
+      cars: [],
+      error: ""
+    }
+    this.deleteCar = this.deleteCar.bind(this)
+  }
+
+  deleteCar(event) {
+    event.preventDefault();
+    let confirmation = confirm("Are you sure you want to delete this car?")
+    if (confirmation) {
+      fetch(`/api/v1/cars/${event.target.id}.json`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json' },
+        credentials: 'same-origin'
+      })
+      .then(response => response.json())
+      .then(body => {
+        if(body.error) {
+          throw body.error
+        } else {
+          let newCars = this.state.cars.filter(car => {
+            return(
+              car.id !== body.car_id
+            )
+          })
+          this.setState({cars: newCars})
+        }
+      })
+      .catch(error => {
+        this.setState({error: error})
+        console.log(error);
+        console.log("ERROR in FETCH")
+      })
     }
   }
 
@@ -31,7 +65,6 @@ class CarsIndexContainer extends Component {
   }
 
   render(){
-
     let cars = this.state.cars.map(car => {
       return(
 
@@ -41,6 +74,7 @@ class CarsIndexContainer extends Component {
           year={car.year}
           make={car.make}
           model={car.model}
+          deleteCar={this.deleteCar}
         />
       )
     })

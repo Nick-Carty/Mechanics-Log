@@ -1,0 +1,40 @@
+.button1 {
+  font-family: 'Cabin', sans-serif;
+  background-color: #054A91;
+  border-radius: 10px;
+  margin-right: 5%;
+  margin-top: 100px;
+  box-shadow: 2px 2px 2px black;
+}
+
+.button2 {
+  font-family: 'Cabin', sans-serif;
+  background-color: #054A91;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+}
+
+input[type="submit"] {
+  background-color: #054A91;
+}
+
+@mixin button-reset {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button3 {
+  @include button-reset;
+  padding: 10px;
+  color: #054A91;
+}
+
+.button4 {
+  margin-right: 2%;
+  margin-bottom: 2%;
+  color: #054A91;
+}
