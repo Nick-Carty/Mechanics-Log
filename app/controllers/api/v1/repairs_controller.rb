@@ -9,6 +9,7 @@ class Api::V1::RepairsController < ApplicationController
   end
 
   def show
+    render json: Repair.find(params[:id])
   end
 
   def create
@@ -19,6 +20,30 @@ class Api::V1::RepairsController < ApplicationController
       render json: { repair: repair }, adapter: :json
     else
       render json: { error: repair.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    repair = Repair.find(params[:id].to_i)
+    @car = repair.car
+    repair.attributes = {
+      title: params[:title],
+      description: params[:description]
+    }
+    if repair.save
+      render json: @car
+    else
+      render json: { error: repair.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    repair = Repair.find(params[:id])
+    if current_user.id == repair.car.user_id
+      repair.destroy
+      render json: { repair_id: repair.id}
+    else
+      render json: { error: "You must be an admin to delete"}, status: :unprocessable_entity
     end
   end
 

@@ -47,18 +47,20 @@ class CarsShowContainer extends Component {
           <RepairsIndexContainer
             carId={this.state.car.id}
           />
-          <button className="button2" onClick={browserHistory.goBack}>
-            Back
-          </button>
+          <Link to={`/`}>
+            <button className="button2">Back</button>
+          </Link>
         </div>
       )
     } else {
       return(
         <div className="border profile-page text-center font">
           <h1>This is not the car you are looking for...</h1>
-          <button className="button2" onClick={browserHistory.goBack}>
-            Back
-          </button>
+
+          <Link to={`/`}>
+            <button className="button2">Back</button>
+          </Link>
+
         </div>
       )
     }

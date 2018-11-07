@@ -12,8 +12,12 @@ const CarTile = props => {
         </Link>
 
         <a id={props.id} onClick={props.deleteCar} className="right-float button4">
-          Delete
+        Delete
         </a>
+
+        <Link to={`/cars/${props.id}/edit`}>
+          <p className="right-float button4">Edit</p>
+        </Link>
 
       </div>
     </div>

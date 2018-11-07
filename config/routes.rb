@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'homes#index'
+
   devise_for :users
 
   namespace :api do
@@ -7,9 +8,10 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show] do
         resources :cars, only: [:index, :create]
       end
-      resources :cars, only: [:show, :destroy] do
-        resources :repairs, only: [:index, :show, :create]
+      resources :cars, only: [:show, :destroy, :update] do
+        resources :repairs, only: [:index, :create]
       end
+      resources :repairs, only: [:destroy, :update, :show]
     end
   end
 
@@ -17,10 +19,11 @@ Rails.application.routes.draw do
     resources :cars, only: [:new]
   end
 
-  resources :cars, only: [:show] do
+  resources :cars, only: [:show, :edit] do
     resources :repairs, only: [:new, :show]
   end
 
-  get '*path', to: 'homes#index'
+  resources :repairs, only: [:edit]
 
+  get '*path', to: 'homes#index'
 end
