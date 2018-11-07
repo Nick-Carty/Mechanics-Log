@@ -6,8 +6,10 @@ class RepairsIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      repairs: []
+      repairs: [],
+      error: ""
     }
+    this.deleteRepair = this.deleteRepair.bind(this)
   }
 
   componentDidMount() {
@@ -30,6 +32,38 @@ class RepairsIndexContainer extends Component {
     .catch(error => console.error(`Error in here: ${error.message}`));
   }
 
+  deleteRepair(event) {
+    event.preventDefault();
+    let confirmation = confirm("Are you sure you want to delete this repair?")
+    if (confirmation) {
+      fetch(`/api/v1/repairs/${event.target.id}.json`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json' },
+        credentials: 'same-origin'
+      })
+      .then(response => response.json())
+      .then(body => {
+        if(body.error) {
+          throw body.error
+        } else {
+          let newRepairs = this.state.repairs.filter(repair => {
+            return(
+              repair.id !== body.repair_id
+            )
+          })
+          this.setState({repairs: newRepairs})
+        }
+      })
+      .catch(error => {
+        this.setState({error: error})
+        console.log(error);
+        console.log("ERROR in FETCH")
+      })
+    }
+  }
+
   render(){
     let repairState = this.state.repairs
     let repairs = repairState.map(repair => {
@@ -39,6 +73,7 @@ class RepairsIndexContainer extends Component {
           id={repair.id}
           title={repair.title}
           description={repair.description}
+          deleteRepair={this.deleteRepair}
         />
       )
     })

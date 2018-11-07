@@ -13,9 +13,8 @@
     <% end -%>
 
     <div class="actions">
-      <%= f.submit "Log in", class: "login-box-submit-button" %>
+      <%= f.submit "Log in", class: "login-box-submit-button" %><br>
+      <%= render "devise/shared/links" %>
     </div>
   <% end %>
 </div>
-
-<%= render "devise/shared/links" %>

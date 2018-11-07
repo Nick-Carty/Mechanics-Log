@@ -11,6 +11,15 @@ const RepairTile = props => {
       <div className="repair-tile font">
         <p>{props.title}</p>
         <p>{props.description}</p>
+
+        <a id={props.id} onClick={props.deleteRepair} className="right-float button4">
+        Delete
+        </a>
+
+        <Link to={`/repairs/${props.id}/edit`}>
+          <p className="right-float button4">Edit</p>
+        </Link>
+
       </div>
     </div>
 

@@ -14,13 +14,11 @@
 .border {
   font-family: 'Cabin', sans-serif;
   background-color: rgba(72, 99, 156, .90);
-  // border: 2px solid black;
   height: 80%;
   width: 90%;
   margin-top: 4%;
   margin-left: 5%;
   margin-right: 5%;
-  // margin: auto;
 }
 
 .profile-page {
@@ -55,7 +53,7 @@
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 2%;
-  padding-bottom: 2%;
+  padding-bottom: 2em;
   border-radius: 10px;
 
 }
@@ -71,24 +69,19 @@
 
 .font h1 {
   font-family: 'Cabin', sans-serif;
-  color: #DBCBD8;
+  color: #d2d5db;
 }
 
 .font p {
   font-family: 'Cabin', sans-serif;
 }
 
-.button1 {
-  font-family: 'Cabin', sans-serif;
-  background-color: #054A91;
-  border-radius: 10px;
-  margin-right: 5%;
-  margin-top: 100px;
-  box-shadow: 2px 2px 2px black;
-}
-
 .left-float {
   float: left;
+}
+
+.right-float {
+  float: right;
 }
 
 .top-bar h1 {
@@ -96,6 +89,14 @@
   color: #DEE7E7;
 }
 
-.repair-tile {
+.flash-notice {
+  font-family: 'Cabin', sans-serif;
+  background-color: #054A91;
+  color: #DEE7E7;
+}
 
+.flash-alert {
+  font-family: 'Cabin', sans-serif;
+  background-color: #054A91;
+  color: #DEE7E7;
 }
