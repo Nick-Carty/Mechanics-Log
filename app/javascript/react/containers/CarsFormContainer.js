@@ -161,7 +161,6 @@ class CarsFormContainer extends Component {
               onChange={this.handleChange}
             />
           </div>
-
           <input className="login-box-submit-button" type="submit" value="Submit" />
           </form>
         </div>
