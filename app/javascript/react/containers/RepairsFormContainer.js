@@ -124,8 +124,9 @@ class RepairsFormContainer extends Component {
             />
           </div>
           <label>Description</label>
-          <div className="field">
-            <input
+          <div>
+            <textarea
+              className="area-field"
               label='Description'
               name='description'
               type = 'text'
