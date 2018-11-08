@@ -25,7 +25,7 @@ class RepairsIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      let fetchedRepairs = body
+      let fetchedRepairs = body.repairs
       this.setState({ repairs: fetchedRepairs })
 
     })
@@ -72,6 +72,8 @@ class RepairsIndexContainer extends Component {
           key={repair.id}
           id={repair.id}
           title={repair.title}
+          createdDate={repair.createdDate}
+          updatedDate={repair.updatedDate}
           description={repair.description}
           deleteRepair={this.deleteRepair}
         />

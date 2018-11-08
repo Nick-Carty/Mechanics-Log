@@ -46,7 +46,7 @@
 
 .car-tile {
   font-family: 'Cabin', sans-serif;
-  background-color: #798478;
+  background-color: #dadcdb;
   border: 2px solid black;
   height: auto;
   width: 90%;
@@ -84,6 +84,10 @@
   float: right;
 }
 
+.left-float {
+  float: left;
+}
+
 .top-bar h1 {
   font-family: 'Cabin', sans-serif;
   color: #DEE7E7;
@@ -99,4 +103,19 @@
   font-family: 'Cabin', sans-serif;
   background-color: #054A91;
   color: #DEE7E7;
+}
+
+.dates {
+  margin-left: 2%;
+  color: #911608;
+  font-family: 'Cabin', sans-serif;
+}
+
+.repair-font {
+  text-decoration: underline;
+  font-size: 1.5em;
+}
+
+.repair-font2 {
+  font-size: 1.1em;
 }

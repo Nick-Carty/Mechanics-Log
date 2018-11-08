@@ -34,7 +34,7 @@ class RepairsEditFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      let fetchedRepair = body
+      let fetchedRepair = body.repair
       this.setState({
         id: fetchedRepair.id,
         title: fetchedRepair.title,
@@ -150,7 +150,8 @@ class RepairsEditFormContainer extends Component {
           </div>
           <label>Description</label>
           <div className="field">
-            <input
+            <textarea
+              className="area-field"
               label='Description'
               name='description'
               type = 'text'
