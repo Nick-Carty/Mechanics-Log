@@ -27,7 +27,7 @@ class Api::V1::CarsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     car = Car.new(car_params)
-    car.user=@user
+    car.user = @user
     if car.save
       render json: { car: car }, adapter: :json
     else

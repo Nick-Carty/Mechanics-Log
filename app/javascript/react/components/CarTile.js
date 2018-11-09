@@ -15,9 +15,9 @@ const CarTile = props => {
         Delete
         </a>
 
-        <Link to={`/cars/${props.id}/edit`}>
-          <p className="right-float button4">Edit</p>
-        </Link>
+        <a href={`/cars/${props.id}/edit`} className="right-float button4">
+        Edit
+        </a>
 
       </div>
     </div>

@@ -65,6 +65,7 @@ class CarsIndexContainer extends Component {
   }
 
   render(){
+    console.log(this.state.cars);
     let cars = this.state.cars.map(car => {
       return(
 

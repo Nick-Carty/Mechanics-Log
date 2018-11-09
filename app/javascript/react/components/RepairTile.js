@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router';
 
-
 const RepairTile = props => {
 
   return (
@@ -16,9 +15,9 @@ const RepairTile = props => {
           Delete
         </a>
 
-        <Link to={`/repairs/${props.id}/edit`}>
-          <p className="right-float button4">Edit</p>
-        </Link>
+        <a href={`/repairs/${props.id}/edit`} className="right-float button4">
+        Edit
+        </a>
 
         <p className="left-float dates">Created: {props.createdDate} / Last Updated: {props.updatedDate}</p>
       </div>

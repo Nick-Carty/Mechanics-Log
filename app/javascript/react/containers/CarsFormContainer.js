@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router'
+import { Route, Redirect, IndexRoute, Router, browserHistory } from 'react-router'
+import { Link } from 'react-router';
 import { push } from 'react-router'
-import { browserHistory } from 'react-router'
 
 class CarsFormContainer extends Component {
   constructor(props) {
@@ -164,6 +164,7 @@ class CarsFormContainer extends Component {
           <input className="login-box-submit-button" type="submit" value="Submit" />
           </form>
         </div>
+        <a onClick={browserHistory.goBack}>Back</a>
       </div>
     )
   }

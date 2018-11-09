@@ -137,6 +137,7 @@ class RepairsFormContainer extends Component {
           <input className="login-box-submit-button" type="submit" value="Submit" />
           </form>
         </div>
+        <a onClick={browserHistory.goBack}>Back</a>
       </div>
     )
   }
