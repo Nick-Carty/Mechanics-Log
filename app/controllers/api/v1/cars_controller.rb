@@ -3,7 +3,9 @@ class Api::V1::CarsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: current_user.cars
+    render json: current_user.cars.map { |car|
+      { repair_count: car.repairs.length }.merge!(car.as_json)
+    }
   end
 
   def show
@@ -15,7 +17,7 @@ class Api::V1::CarsController < ApplicationController
     car.attributes = {
       year: params[:year],
       make: params[:make],
-      model: params[:model],
+      model: params[:model]
     }
     if car.save
       render json: car

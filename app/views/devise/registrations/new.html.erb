@@ -23,6 +23,9 @@
 
           <%= f.label :password_confirmation, 'Password confirmation' %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "login-box-input", placeholder: "Retype Password" %>
+
+          <%= f.file_field :profile_photo %>
+
           <%= f.submit "Sign up", class: "login-box-submit-button" %>
         <% end %>
         </div>

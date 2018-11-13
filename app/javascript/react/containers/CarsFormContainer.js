@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Redirect, IndexRoute, Router, browserHistory } from 'react-router'
+import { Route, Redirect, IndexRoute, Router, browserHistory } from 'react-router';
+import { validate } from '../lib/validators';
 import { Link } from 'react-router';
-import { push } from 'react-router'
+import { push } from 'react-router';
 
 class CarsFormContainer extends Component {
   constructor(props) {
@@ -17,49 +18,7 @@ class CarsFormContainer extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.validateYearInput = this.validateYearInput.bind(this);
-    this.validateMakeInput = this.validateMakeInput.bind(this);
-    this.validateModelInput = this.validateModelInput.bind(this);
   }
-
-  validateYearInput(input) {
-      if (input.trim() === '') {
-        let newError = { title: "You must enter a Year!" }
-        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-        return false
-      } else {
-        let errorState = this.state.errors
-        delete errorState.inputError
-        this.setState({ errors: errorState })
-        return true
-      }
-    }
-
-  validateMakeInput(input) {
-      if (input.trim() === '') {
-        let newError = { title: "You must enter a Make!" }
-        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-        return false
-      } else {
-        let errorState = this.state.errors
-        delete errorState.inputError
-        this.setState({ errors: errorState })
-        return true
-      }
-    }
-
-  validateModelInput(input) {
-      if (input === '') {
-        let newError = { title: "You must enter a Model!" }
-        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-        return false
-      } else {
-        let errorState = this.state.errors
-        delete errorState.inputError
-        this.setState({ errors: errorState })
-        return true
-      }
-    }
 
   handleChange(event) {
     let value = event.target.value
@@ -78,10 +37,10 @@ class CarsFormContainer extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if(
-      (this.validateYearInput(this.state.year)) &&
-      (this.validateMakeInput(this.state.make)) &&
-      (this.validateModelInput(this.state.model))
+    if (
+      validate(this.state.year, 'year', this) &&
+      validate(this.state.make, 'make', this) &&
+      validate(this.state.model, 'model', this)
     ) {
 
     let formPayload = {
