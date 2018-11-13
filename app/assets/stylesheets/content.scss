@@ -56,6 +56,53 @@
   padding-bottom: 2em;
   border-radius: 10px;
 
+  @media(max-width: 500px) {
+    text-align: center;
+
+    &__text-left {
+      text-align: unset !important;
+    }
+
+    &__text-right {
+      text-align: unset !important;
+    }
+  }
+
+  &__title {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  &__text-left {
+    text-align: left;
+  }
+
+  &__text-right {
+    text-align: right;
+  }
+
+  &__desc {
+    font-size: larger;
+  }
+
+  &__button {
+    margin-right: 2%;
+    display: block;
+    margin-bottom: 2%;
+    color: #054A91;
+    margin-bottom: 0;
+  }
+
+  &__col {
+    margin: 10px 0px 10px 0px;
+  }
+
+  &__date {
+    margin-left: 2%;
+    color: #911608;
+    margin-bottom: 0;
+  }
+
 }
 
 .car-tile h1 {
@@ -118,4 +165,12 @@
 
 .repair-font2 {
   font-size: 1.1em;
+}
+
+.top-bar img {
+  height: 45px;
+}
+
+.prof-photo {
+  height: 200px;
 }

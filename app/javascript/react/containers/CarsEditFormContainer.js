@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router'
 import { push } from 'react-router'
+import { validate } from '../lib/validators';
 import { browserHistory } from 'react-router'
 
 class CarsEditFormContainer extends Component {
@@ -18,9 +19,6 @@ class CarsEditFormContainer extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.validateYearEdit = this.validateYearEdit.bind(this);
-    this.validateMakeEdit = this.validateMakeEdit.bind(this);
-    this.validateModelEdit = this.validateModelEdit.bind(this);
   }
 
   componentDidMount() {
@@ -48,48 +46,8 @@ class CarsEditFormContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  validateYearEdit(input) {
-    if (input === ''|| input.toString().length !== 4) {
-      let newError = { title: "You must enter a Valid Year!" }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.inputError
-      this.setState({ errors: errorState })
-      return true
-    }
-  }
-
-  validateMakeEdit(input) {
-    if (input.trim() === '') {
-      let newError = { title: "You must enter a Make!" }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.inputError
-      this.setState({ errors: errorState })
-      return true
-    }
-  }
-
-  validateModelEdit(input) {
-    if (input.trim() === '') {
-      let newError = { title: "You must enter a Model!" }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.inputError
-      this.setState({ errors: errorState })
-      return true
-    }
-  }
-
   handleChange(event) {
-    let value = event.target.value
-    let name = event.target.name
+    const { value, name } = event.target;
     this.setState({ [name]: value })
   }
 
@@ -104,10 +62,10 @@ class CarsEditFormContainer extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if(
-      (this.validateYearEdit(this.state.year)) &&
-      (this.validateMakeEdit(this.state.make)) &&
-      (this.validateModelEdit(this.state.model))
+    if (
+      validate(this.state.year, 'year', this) &&
+      validate(this.state.make, 'make', this) &&
+      validate(this.state.model, 'model', this)
     ) {
 
     let formPayload = {
@@ -191,6 +149,7 @@ class CarsEditFormContainer extends Component {
           <input className="login-box-submit-button" type="submit" value="Submit" />
           </form>
         </div>
+        <a onClick={browserHistory.goBack}>Back</a>
       </div>
     )
   }
