@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router';
 
 const CarTile = props => {
-  const repairCount = `${props.repairCount || "No"} Repairs`;
+  const repairCount = `${props.repair_count || "No"} Repairs`;
   return (
     <div className="car-tile">
       <Link to={`/cars/${props.id}`}>
