@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router'
+import { validate } from '../lib/validators';
 import { push } from 'react-router'
 import { browserHistory } from 'react-router'
 
 class RepairsEditFormContainer extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       id: '',
       title: '',
       description: '',
       errors: {}
     }
-
     this.handleChange = this.handleChange.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.validateTitleEdit = this.validateTitleEdit.bind(this);
-    this.validateDescriptionEdit = this.validateDescriptionEdit.bind(this);
   }
 
   componentDidMount() {
@@ -45,51 +41,17 @@ class RepairsEditFormContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  validateTitleEdit(input) {
-    if (input.trim() === '') {
-      let newError = { title: "You must enter a Title!" }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.inputError
-      this.setState({ errors: errorState })
-      return true
-    }
-  }
-
-  validateDescriptionEdit(input) {
-    if (input.trim() === '') {
-      let newError = { title: "You must enter a Description!" }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.inputError
-      this.setState({ errors: errorState })
-      return true
-    }
-  }
-
   handleChange(event) {
     let value = event.target.value
     let name = event.target.name
     this.setState({ [name]: value })
   }
 
-  handleClearForm() {
-    this.setState({
-      title: '',
-      description: '',
-      errors: {}
-    })
-  };
-
   handleSubmit(event) {
     event.preventDefault();
     if(
-      (this.validateTitleEdit(this.state.title)) &&
-      (this.validateDescriptionEdit(this.state.description))
+      validate(this.state.title, 'title', this) &&
+      validate(this.state.description, 'description', this)
     ) {
 
     let formPayload = {

@@ -36,14 +36,22 @@ RSpec.describe Api::V1::CarsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq "application/json"
-
       expect(returned_json.length).to eq 8
-
       expect(returned_json["year"]).to eq 2007
       expect(returned_json["make"]).to eq "Toyota"
       expect(returned_json["model"]).to eq "Camry"
       expect(returned_json["user_id"]).to eq subject.current_user.id
+    end
+  end
 
+  describe "POST#create" do
+    it "creates a new car" do
+
+      post_json = { car: {year: 2009, make: "Nissan", model: "350z"}, user_id: User.first.id}
+      prev_count = Car.count
+      post(:create, params: post_json)
+
+      expect(Car.count).to eq(prev_count + 1)
     end
   end
 

@@ -7,7 +7,6 @@ import { browserHistory } from 'react-router'
 class CarsEditFormContainer extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       id: '',
       year: '',
@@ -15,9 +14,7 @@ class CarsEditFormContainer extends Component {
       model: '',
       errors: {}
     }
-
     this.handleChange = this.handleChange.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -50,15 +47,6 @@ class CarsEditFormContainer extends Component {
     const { value, name } = event.target;
     this.setState({ [name]: value })
   }
-
-  handleClearForm() {
-    this.setState({
-      year: '',
-      make: '',
-      model: '',
-      errors: {}
-    })
-  };
 
   handleSubmit(event) {
     event.preventDefault();
