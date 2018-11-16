@@ -10,24 +10,24 @@ class CarsShowContainer extends Component {
       car: {}
     }
   }
+
+  parseResponse(response) {
+    if (!response.ok) {
+      throw new Error(`${response.status} (${response.statusText})`);
+    }
+    return response;
+  }
+
+  logError(error) {
+    console.error(`Error in fetch: ${error.message}`);
+  }
+
   componentDidMount() {
     fetch(`/api/v1/cars/${this.props.params.car_id}`)
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`
-        error = new Error(message);
-        throw(error);
-      }
-    })
+    .then(this.parseResponse)
     .then(response => response.json())
-    .then(body => {
-      let fetchedCar = body
-      this.setState({ car: fetchedCar })
-
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .then(fetchedCar => this.setState({ car: fetchedCar }))
+    .catch(this.logError);
   }
 
   render(){
@@ -44,9 +44,7 @@ class CarsShowContainer extends Component {
           <Link to={`/cars/${this.state.car.id}/repairs/new`}>
             <button className="right button1">Add a Repair</button>
           </Link>
-          <RepairsIndexContainer
-            carId={this.state.car.id}
-          />
+          <RepairsIndexContainer carId={this.state.car.id}/>
           <Link to={`/`}>
             <button className="button2">Back</button>
           </Link>
@@ -56,11 +54,9 @@ class CarsShowContainer extends Component {
       return(
         <div className="border profile-page text-center font">
           <h1>This is not the car you are looking for...</h1>
-
           <Link to={`/`}>
             <button className="button2">Back</button>
           </Link>
-
         </div>
       )
     }

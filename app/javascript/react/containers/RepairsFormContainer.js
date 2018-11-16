@@ -1,49 +1,19 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router'
+import { validate } from '../lib/validators';
 import { push } from 'react-router'
 import { browserHistory } from 'react-router'
 
 class RepairsFormContainer extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       title: '',
       description: '',
       errors: {}
     }
-
     this.handleChange = this.handleChange.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.validateTitleInput = this.validateTitleInput.bind(this);
-    this.validateDescriptionInput = this.validateDescriptionInput.bind(this);
-  }
-
-  validateTitleInput(input) {
-    if (input.trim() === '') {
-      let newError = { title: "You must enter a Title!" }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.inputError
-      this.setState({ errors: errorState })
-      return true
-    }
-  }
-
-  validateDescriptionInput(input) {
-    if (input.trim() === '') {
-      let newError = { title: "You must enter a Description!" }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.inputError
-      this.setState({ errors: errorState })
-      return true
-    }
   }
 
   handleChange(event) {
@@ -52,19 +22,11 @@ class RepairsFormContainer extends Component {
     this.setState({ [name]: value })
   }
 
-  handleClearForm() {
-    this.setState({
-      title: '',
-      description: '',
-      errors: {}
-    })
-  };
-
   handleSubmit(event) {
     event.preventDefault();
     if(
-      (this.validateTitleInput(this.state.title)) &&
-      (this.validateDescriptionInput(this.state.description))
+      validate(this.state.title, 'title', this) &&
+      validate(this.state.description, 'description', this)
     ) {
 
     let formPayload = {

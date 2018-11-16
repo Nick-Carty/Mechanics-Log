@@ -9,7 +9,11 @@ class RepairsIndexContainer extends Component {
       repairs: [],
       error: ""
     }
-    this.deleteRepair = this.deleteRepair.bind(this)
+    this.onDelete = this.onDelete.bind(this)
+  }
+
+  logError(error) {
+    console.error(`Error in fetch: ${error.message}`);
   }
 
   componentDidMount() {
@@ -32,36 +36,38 @@ class RepairsIndexContainer extends Component {
     .catch(error => console.error(`Error in here: ${error.message}`));
   }
 
-  deleteRepair(event) {
+  deleteRepair(id) {
+    return fetch(`/api/v1/repairs/${id}.json`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json' },
+      credentials: 'same-origin'
+    });
+  }
+
+  onDelete(event) {
     event.preventDefault();
+
     let confirmation = confirm("Are you sure you want to delete this repair?")
-    if (confirmation) {
-      fetch(`/api/v1/repairs/${event.target.id}.json`, {
-        method: 'DELETE',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json' },
-        credentials: 'same-origin'
-      })
-      .then(response => response.json())
-      .then(body => {
-        if(body.error) {
-          throw body.error
-        } else {
-          let newRepairs = this.state.repairs.filter(repair => {
-            return(
-              repair.id !== body.repair_id
-            )
-          })
-          this.setState({repairs: newRepairs})
-        }
-      })
-      .catch(error => {
-        this.setState({error: error})
-        console.log(error);
-        console.log("ERROR in FETCH")
-      })
+    if (!confirmation) {
+      return;
     }
+
+    this.deleteRepair(event.target.id)
+    .then(response => response.json())
+    .then(body => {
+      if(body.error) {
+        throw body.error
+      }
+      this.setState({
+        repairs: this.state.repairs.filter(repair => repair.id !== body.repair_id)
+      })
+    })
+    .catch(error => {
+      this.setState({ error})
+      this.logError(error);
+    })
   }
 
   render(){
@@ -75,7 +81,7 @@ class RepairsIndexContainer extends Component {
           createdDate={repair.createdDate}
           updatedDate={repair.updatedDate}
           description={repair.description}
-          deleteRepair={this.deleteRepair}
+          deleteRepair={this.onDelete}
         />
       )
     })

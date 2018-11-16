@@ -4,6 +4,8 @@ const validators = {};
 validators.year = (input) => (input !== '' && input.toString().length === 4);
 validators.model = (input) => isNotBlank(input);
 validators.make = (input) => isNotBlank(input);
+validators.title = (input) => isNotBlank(input);
+validators.description = (input) => isNotBlank(input);
 
 const validate = function(input, validator, context) {
   const isValid = validators[validator](input);

@@ -35,5 +35,4 @@ RSpec.describe Repair, :type => :model do
     subject.car_id = ""
     expect(subject).to_not be_valid
   end
-
 end

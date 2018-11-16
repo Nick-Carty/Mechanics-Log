@@ -7,16 +7,13 @@ import { push } from 'react-router';
 class CarsFormContainer extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       year: '',
       make: '',
       model: '',
       errors: {}
     }
-
     this.handleChange = this.handleChange.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -25,15 +22,6 @@ class CarsFormContainer extends Component {
     let name = event.target.name
     this.setState({ [name]: value })
   }
-
-  handleClearForm() {
-    this.setState({
-      year: '',
-      make: '',
-      model: '',
-      errors: {}
-    })
-  };
 
   handleSubmit(event) {
     event.preventDefault();
