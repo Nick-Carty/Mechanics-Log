@@ -8,8 +8,8 @@ Welcome to Mechanics Log:
   2.4.5
 
 * Clone and run: 
-rake db:create
-rake db:migrate
-bundle install
-yarn install
+* rake db:create
+* rake db:migrate
+* bundle install
+* yarn install
 
